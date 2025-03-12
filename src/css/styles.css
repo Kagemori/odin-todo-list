@@ -24,3 +24,7 @@ header {
 #todo-container {
     grid-column: 2 / 3;
 }
+
+.proj-card {
+    box-shadow: 5px 5px 10px black;
+}

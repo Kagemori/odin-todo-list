@@ -33,4 +33,37 @@ function selectActiveProject(index) {
     return projectDirectory[index];
 }
 
-export {createProject,listProjects,selectActiveProject}
+const projectSidebar = () => {
+    let sidebar = document.querySelector("#project-sidebar");
+
+    let projectCardHolder = document.createElement("div");
+    projectCardHolder.setAttribute("id","proj-card-holder");
+
+    for(let i = 0; i < projectDirectory.length; i++){
+        projectCardHolder.appendChild(
+            addProjectCard(projectDirectory[i].projectName, projectDirectory[i].projectDescription)
+        );
+    }
+
+    sidebar.appendChild(projectCardHolder);
+}
+
+function addProjectCard(name,desc){
+    let projectCard = document.createElement("div");
+    projectCard.classList.add("proj-card");
+
+    let projCardName = document.createElement("div");
+    projCardName.classList.add("proj-card-name");
+    projCardName.textContent = name;
+
+    let projCardDesc = document.createElement("div");
+    projCardDesc.classList.add("proj-card-desc");
+    projCardDesc.textContent = desc;
+
+    projectCard.appendChild(projCardName);
+    projectCard.appendChild(projCardDesc);
+
+    return projectCard;
+}
+
+export {projectSidebar,createProject,listProjects,selectActiveProject}
