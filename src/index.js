@@ -8,4 +8,10 @@ newTodo.addEventListener('click', () => {
         newForm.removeChild(newForm.lastElementChild);
     }
     todoform();
+
+    let submitTodo = document.querySelector("#submit");
+    submitTodo.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log("Submitted");
+    })
 })

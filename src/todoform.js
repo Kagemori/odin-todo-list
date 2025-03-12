@@ -8,6 +8,7 @@ const todoform = () => {
 
     let newTodoForm = document.createElement("form");
     newTodoForm.setAttribute("id","todo-form");
+    newTodoForm.setAttribute("action","");
 
     // Todo Form Inputs
     newTodoForm.appendChild(
@@ -58,13 +59,15 @@ const todoform = () => {
         )
     );
 
-    newTodoForm.appendChild(
-        addFormInput("",
-            "submit",
-            "submit",
-            ""
-        )
-    );
+    let formSection = document.createElement("div");
+    formSection.classList.add("form-section");
+    let submitButton = document.createElement("button");
+    submitButton.setAttribute("type","submit");
+    submitButton.setAttribute("id","submit");
+    submitButton.textContent = "Add Todo";
+
+    formSection.appendChild(submitButton);
+    newTodoForm.appendChild(formSection);
 
     newTodoFormDiv.appendChild(newTodoForm);
     newForm.appendChild(newTodoFormDiv);
