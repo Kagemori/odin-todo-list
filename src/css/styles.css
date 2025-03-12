@@ -1,0 +1,26 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    display: grid;
+}
+
+header {
+    grid-row: 1;
+}
+
+#content {
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+#project-sidebar {
+    grid-column: 1 / 2;
+}
+
+#todo-container {
+    grid-column: 2 / 3;
+}
