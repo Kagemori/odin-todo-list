@@ -29,7 +29,7 @@ const todoform = () => {
 
     newTodoForm.appendChild(
         addFormInput("Due Date",
-            "todo-due",
+            "todo-date",
             "date",
             ""
         )

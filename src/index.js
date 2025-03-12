@@ -1,11 +1,15 @@
 import { todoform } from "./todoform.js";
 import { projectform } from "./projectform.js";
+import { createProject, listProjects, selectActiveProject } from "./project.js";
 
 import "./css/styles.css";
 
 let newTodo = document.querySelector("#new-todo");
 let newProj = document.querySelector("#new-project")
 let newForm = document.querySelector("#new-form");
+
+// Remove when actually saving things
+localStorage.clear();
 
 newTodo.addEventListener('click', () => {
     while(newForm.lastElementChild) {
@@ -17,6 +21,9 @@ newTodo.addEventListener('click', () => {
     submitTodo.addEventListener('click', (e) => {
         e.preventDefault();
         console.log("Submitted Todo");
+        let currentProject = selectActiveProject(0);
+        currentProject.addTodo();
+        console.log(currentProject);
     })
 });
 
@@ -30,5 +37,7 @@ newProj.addEventListener('click', () => {
     submitProject.addEventListener('click', (e) => {
         e.preventDefault();
         console.log("Submitted Project");
+        createProject();
+        listProjects();
     })
 });
