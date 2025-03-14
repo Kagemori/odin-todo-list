@@ -1,3 +1,5 @@
+import { updateTodoContainer } from "./todo";
+
 let projectDirectory = [];
 
 class Project {
@@ -16,6 +18,13 @@ class Project {
         let todo = {name: name,desc: desc,date: date,priority: prio}
         this.todoList.push(todo);
     }
+}
+
+function defaultProject(){
+    const projName = "Default Project";
+    const projDesc = "Add more projects above";
+
+    projectDirectory.push(new Project(projName,projDesc));
 }
 
 function createProject (){
@@ -41,14 +50,14 @@ const projectSidebar = () => {
 
     for(let i = 0; i < projectDirectory.length; i++){
         projectCardHolder.appendChild(
-            addProjectCard(projectDirectory[i].projectName, projectDirectory[i].projectDescription)
+            addProjectCard(projectDirectory[i].projectName, projectDirectory[i].projectDescription,i)
         );
     }
 
     sidebar.appendChild(projectCardHolder);
 }
 
-function addProjectCard(name,desc){
+function addProjectCard(name,desc,index){
     let projectCard = document.createElement("div");
     projectCard.classList.add("proj-card");
 
@@ -63,7 +72,23 @@ function addProjectCard(name,desc){
     projectCard.appendChild(projCardName);
     projectCard.appendChild(projCardDesc);
 
+    projectCard.addEventListener('click', () => {
+        let currentProjectIndex = index;
+
+        projectTodos(currentProjectIndex);
+    })
+
     return projectCard;
 }
 
-export {projectSidebar,createProject,listProjects,selectActiveProject}
+function projectTodos(index){
+    let todoContainer = document.querySelector("#todo-container");
+    while(todoContainer.lastElementChild) {
+        todoContainer.removeChild(todoContainer.lastElementChild);
+    }
+
+    let projectTodoArray = projectDirectory[index].todoList;
+    updateTodoContainer(projectTodoArray);
+}
+
+export {projectSidebar,createProject,listProjects,selectActiveProject, defaultProject}
