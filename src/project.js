@@ -1,4 +1,5 @@
 import { updateTodoContainer } from "./todo";
+import { shared } from "./shared";
 
 let projectDirectory = [];
 
@@ -73,9 +74,9 @@ function addProjectCard(name,desc,index){
     projectCard.appendChild(projCardDesc);
 
     projectCard.addEventListener('click', () => {
-        let currentProjectIndex = index;
+        shared.activeProject = index;
 
-        projectTodos(currentProjectIndex);
+        projectTodos(shared.activeProject);
     })
 
     return projectCard;

@@ -1,6 +1,7 @@
 import { todoform } from "./todoform.js";
 import { projectform } from "./projectform.js";
 import { projectSidebar, createProject, listProjects, selectActiveProject, defaultProject} from "./project.js";
+import { shared } from "./shared.js";
 
 import "./css/styles.css";
 
@@ -26,7 +27,7 @@ newTodo.addEventListener('click', () => {
     submitTodo.addEventListener('click', (e) => {
         e.preventDefault();
         console.log("Submitted Todo");
-        let currentProject = selectActiveProject(currentProjectIndex);
+        let currentProject = selectActiveProject(shared.activeProject);
         currentProject.addTodo();
         console.log(currentProject);
     })
