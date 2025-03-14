@@ -18,38 +18,50 @@ defaultProject();
 projectSidebar();
 
 newTodo.addEventListener('click', () => {
-    while(newForm.lastElementChild) {
-        newForm.removeChild(newForm.lastElementChild);
+    if(document.getElementById("new-todo-form")){
+        while(newForm.lastElementChild) {
+            newForm.removeChild(newForm.lastElementChild);
+        }
+    } else {
+        while(newForm.lastElementChild) {
+            newForm.removeChild(newForm.lastElementChild);
+        }
+        todoform();
+    
+        let submitTodo = document.querySelector("#submit");
+        submitTodo.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("Submitted Todo");
+            let currentProject = selectActiveProject(shared.activeProject);
+            currentProject.addTodo();
+            projectTodos(shared.activeProject);
+            console.log(currentProject);
+        })
     }
-    todoform();
-
-    let submitTodo = document.querySelector("#submit");
-    submitTodo.addEventListener('click', (e) => {
-        e.preventDefault();
-        console.log("Submitted Todo");
-        let currentProject = selectActiveProject(shared.activeProject);
-        currentProject.addTodo();
-        projectTodos(shared.activeProject);
-        console.log(currentProject);
-    })
 });
 
 newProj.addEventListener('click', () => {
-    while(newForm.lastElementChild) {
-        newForm.removeChild(newForm.lastElementChild);
-    }
-    projectform();
-
-    let submitProject = document.querySelector("#submit");
-    submitProject.addEventListener('click', (e) => {
-        e.preventDefault();
-        console.log("Submitted Project");
-        createProject();
-        listProjects();
-
-        while(projSidebar.lastElementChild) {
-            projSidebar.removeChild(projSidebar.lastElementChild);
+    if(document.getElementById("new-project-form")){
+        while(newForm.lastElementChild) {
+            newForm.removeChild(newForm.lastElementChild);
         }
-        projectSidebar();
-    })
+    } else {
+        while(newForm.lastElementChild) {
+            newForm.removeChild(newForm.lastElementChild);
+        }
+        projectform();
+    
+        let submitProject = document.querySelector("#submit");
+        submitProject.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("Submitted Project");
+            createProject();
+            listProjects();
+    
+            while(projSidebar.lastElementChild) {
+                projSidebar.removeChild(projSidebar.lastElementChild);
+            }
+            projectSidebar();
+        })
+    }
 });

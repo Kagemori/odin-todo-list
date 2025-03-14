@@ -56,6 +56,12 @@ const projectSidebar = () => {
     }
 
     sidebar.appendChild(projectCardHolder);
+
+    document.querySelectorAll(".proj-card").forEach(div => {
+        div.addEventListener('click', () => {
+            projectHighlight(div);
+        });
+    });
 }
 
 function addProjectCard(name,desc,index){
@@ -75,11 +81,18 @@ function addProjectCard(name,desc,index){
 
     projectCard.addEventListener('click', () => {
         shared.activeProject = index;
-
         projectTodos(shared.activeProject);
     })
 
     return projectCard;
+}
+
+function projectHighlight(id){
+    document.querySelectorAll(".highlight").forEach(div => {
+        div.classList.remove("highlight");
+    });
+
+    id.classList.add("highlight");
 }
 
 function projectTodos(index){
