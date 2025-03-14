@@ -92,4 +92,4 @@ function projectTodos(index){
     updateTodoContainer(projectTodoArray);
 }
 
-export {projectSidebar,createProject,listProjects,selectActiveProject, defaultProject}
+export {projectSidebar,createProject,listProjects,selectActiveProject, defaultProject, projectTodos}
