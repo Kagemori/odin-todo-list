@@ -18,6 +18,8 @@ header {
 
     background: darkgreen;
     box-shadow: 0 5px 5px black;
+
+    z-index: 4;
 }
 
 nav {
@@ -80,6 +82,7 @@ nav button {
     grid-column: 1 / 2;
 
     background-color: green;
+    min-height: 100vh;
 }
 
 #todo-container {
