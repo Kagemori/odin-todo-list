@@ -58,9 +58,9 @@ newProj.addEventListener('click', () => {
             createProject();
             listProjects();
     
-            while(projSidebar.lastElementChild) {
-                projSidebar.removeChild(projSidebar.lastElementChild);
-            }
+            // while(projSidebar.lastElementChild) {
+            //     projSidebar.removeChild(projSidebar.lastElementChild);
+            // }
             projectSidebar();
         })
     }
