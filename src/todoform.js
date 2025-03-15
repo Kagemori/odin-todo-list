@@ -39,7 +39,7 @@ const todoform = () => {
         addFormInput("Low Priority",
             "todo-low",
             "radio",
-            "low"
+            "Low"
         )
     );
 
@@ -47,7 +47,7 @@ const todoform = () => {
         addFormInput("Medium Priority",
             "todo-med",
             "radio",
-            "med"
+            "Medium"
         )
     );
 
@@ -55,7 +55,7 @@ const todoform = () => {
         addFormInput("High Priority",
             "todo-high",
             "radio",
-            "high"
+            "High"
         )
     );
 

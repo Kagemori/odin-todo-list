@@ -31,11 +31,11 @@ function addTodoCard(name,desc,date,prio,index) {
 
     let todoCardDate = document.createElement("div");
     todoCardDate.classList.add("todo-card-date");
-    todoCardDate.textContent = date;
+    todoCardDate.textContent = `Due: ${date}`;
 
     let todoCardPrio = document.createElement("div");
     todoCardPrio.classList.add("todo-card-prio");
-    todoCardPrio.textContent = prio;
+    todoCardPrio.textContent = `${prio} Priority`;
 
     todoCard.appendChild(todoCardName);
     todoCard.appendChild(todoCardDesc);
