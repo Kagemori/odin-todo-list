@@ -36,6 +36,10 @@ newTodo.addEventListener('click', () => {
             currentProject.addTodo();
             projectTodos(shared.activeProject);
             console.log(currentProject);
+
+            while(newForm.lastElementChild) {
+                newForm.removeChild(newForm.lastElementChild);
+            }
         })
     }
 });
@@ -62,6 +66,9 @@ newProj.addEventListener('click', () => {
             //     projSidebar.removeChild(projSidebar.lastElementChild);
             // }
             projectSidebar();
+            while(newForm.lastElementChild) {
+                newForm.removeChild(newForm.lastElementChild);
+            }
         })
     }
 });
