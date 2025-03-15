@@ -10,6 +10,9 @@ const todoform = () => {
     newTodoForm.setAttribute("id","todo-form");
     newTodoForm.setAttribute("action","");
 
+    let radioButtons = document.createElement("div");
+    radioButtons.setAttribute("id","radiobtns");
+
     // Todo Form Inputs
     newTodoForm.appendChild(
         addFormInput("Name",
@@ -35,29 +38,31 @@ const todoform = () => {
         )
     );
 
-    newTodoForm.appendChild(
-        addFormInput("Low Priority",
+    radioButtons.appendChild(
+        addFormInput("Low",
             "todo-low",
             "radio",
             "Low"
         )
     );
 
-    newTodoForm.appendChild(
-        addFormInput("Medium Priority",
+    radioButtons.appendChild(
+        addFormInput("Medium",
             "todo-med",
             "radio",
             "Medium"
         )
     );
 
-    newTodoForm.appendChild(
-        addFormInput("High Priority",
+    radioButtons.appendChild(
+        addFormInput("High",
             "todo-high",
             "radio",
             "High"
         )
     );
+
+    newTodoForm.appendChild(radioButtons);
 
     let formSection = document.createElement("div");
     formSection.classList.add("form-section");
@@ -76,12 +81,15 @@ const todoform = () => {
 function addFormInput(labelName, id, formType, value){
     let formSection = document.createElement("div");
     formSection.classList.add("form-section");
+    let formLabel = document.createElement("label");
+    formLabel.setAttribute("for",id);
 
     if (formType !== "submit"){
-        let formLabel = document.createElement("label");
-        formLabel.setAttribute("for",id);
-        formLabel.textContent = `${labelName}:`;
-        formSection.appendChild(formLabel);
+        if(formType === "radio"){
+            formLabel.textContent = `${labelName}`;
+        }else{
+            formLabel.textContent = `${labelName}:`;
+        }
     }
 
     let formInput = document.createElement("input");
@@ -94,7 +102,17 @@ function addFormInput(labelName, id, formType, value){
         formInput.setAttribute("value",value);
     }
 
-    formSection.appendChild(formInput);
+    if (formType !== "submit"){
+        if (formType === "radio"){
+            formSection.appendChild(formInput);
+            formSection.appendChild(formLabel);
+        }else {
+            formSection.appendChild(formLabel);
+            formSection.appendChild(formInput);
+        }
+    }else{
+        formSection.appendChild(formInput);
+    }
 
     return formSection;
 }

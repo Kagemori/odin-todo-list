@@ -37,11 +37,17 @@ nav button {
     font-size: 25px;
     padding: 2.5px 15px;
     margin: 0px 20px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+nav button:hover {
+    transform: scale(1.2);
+    box-shadow: 0px 0px 10px orange;
 }
 
 #new-form {
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%,-50%);
     z-index: 5;
@@ -68,8 +74,87 @@ nav button {
     background-color: greenyellow;
     border-radius: 10px;
 
-    margin-top: 10%;
-    padding-bottom: 20px;
+    box-shadow: 0px 0px 10px black;
+
+    padding: 20px;
+}
+
+.form-section {
+    display: flex;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+label {
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+input {
+    flex-grow: 1;
+    width: 100%;
+}
+
+#radiobtns {
+    display: flex;
+    flex-direction: row;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label[for="todo-low"],label[for="todo-med"],label[for="todo-high"]{
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: wheat;
+    margin: 5px;
+    padding: 3px 20px;
+    transition: all 0.3s ease;
+}
+
+label[for="todo-low"]:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px green;
+    background-color: lightgreen;
+}
+
+label[for="todo-med"]:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px yellow;
+    background-color: gold;
+}
+
+label[for="todo-high"]:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px red;
+    background-color: lightcoral;
+}
+
+input[type="radio"]:checked + label{
+    background-color: darkgreen;
+    color: orange;
+}
+
+#todo-form > :last-child, #project-form > :last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#todo-form > :last-child > button, #project-form > :last-child > button {
+    font-size: 20px;
+    padding: 1px 15px;
+    border-radius: 10px;
+    background-color: wheat;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#todo-form > :last-child > button:hover, #project-form > :last-child > button:hover {
+    transform: scale(1.1);
 }
 
 #content {
