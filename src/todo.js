@@ -1,3 +1,5 @@
+import "./css/todo.css";
+
 const updateTodoContainer = (activeProjectArray) => {
     if(activeProjectArray.length > 0) {
         let todoContainer = document.querySelector("#todo-container");

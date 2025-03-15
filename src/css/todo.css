@@ -1,0 +1,51 @@
+#todo-container {
+    background-color: palegreen;
+}
+
+#todo-card-holder {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 10px;
+    margin: 20px 15px;
+}
+
+.todo-card {
+    background-color: orange;
+    border-radius: 10px;
+    min-height: 120px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-card-name {
+    font-weight: bold;
+    font-size: 25px;
+    text-wrap: wrap;
+
+    padding-top: 10px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+}
+
+.todo-card-desc {
+    font-style: italic;
+    font-size: 18px;
+
+    padding: 0px 10px;
+}
+
+.todo-card-date {
+    font-size: 16px;
+    
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.todo-card-prio {
+    font-size: 16px;
+
+    padding: 0px 10px;
+}
