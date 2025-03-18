@@ -4,10 +4,10 @@ import { shared } from "./shared";
 let projectDirectory = [];
 
 class Project {
-    constructor(projectName, projectDescription){
+    constructor(projectName, projectDescription, todoList){
         this.projectName = projectName;
         this.projectDescription = projectDescription;
-        this.todoList = [];
+        this.todoList = todoList;
     }
 
     addTodo() {
@@ -39,14 +39,36 @@ function defaultProject(){
     const projName = "Default Project";
     const projDesc = "Add more projects above";
 
-    projectDirectory.push(new Project(projName,projDesc));
+    loadJson();
+    console.log(projectDirectory);
+    if(projectDirectory.length === 0){
+        projectDirectory.push(new Project(projName,projDesc,[]));
+    } else {
+        loadSidebar();
+    }
+}
+
+function loadSidebar(){
+    let sidebar = document.querySelector("#project-sidebar");
+
+    let projectCardHolder = document.querySelector("#project-card-holder");
+    
+    for(let i = 0; i < projectDirectory.length - 1; i++){
+        let projectCard = addProjectCard(projectDirectory[i].projectName, projectDirectory[i].projectDescription,i);
+        projectCard.addEventListener('click', () => {
+            projectHighlight(projectCard);
+        });
+        projectCardHolder.appendChild(projectCard);
+    }
+
+    sidebar.appendChild(projectCardHolder);
 }
 
 function createProject (){
     const projName = document.getElementById("proj-name").value;
     const projDesc = document.getElementById("proj-desc").value;
 
-    projectDirectory.push(new Project(projName,projDesc));
+    projectDirectory.push(new Project(projName,projDesc,[]));
 }
 
 function listProjects (){
@@ -61,12 +83,6 @@ const projectSidebar = () => {
     let sidebar = document.querySelector("#project-sidebar");
 
     let projectCardHolder = document.querySelector("#project-card-holder");
-
-    // for(let i = 0; i < projectDirectory.length; i++){
-    //     projectCardHolder.appendChild(
-    //         addProjectCard(projectDirectory[i].projectName, projectDirectory[i].projectDescription,i)
-    //     );
-    // }
 
     let latestArrayObject = projectDirectory[projectDirectory.length-1];
     let latestArrayObjectIndex = projectDirectory.length - 1;
@@ -127,4 +143,13 @@ function getProjectArray (activeProjectIndex){
     return projectDirectory[activeProjectIndex];
 }
 
-export {projectSidebar,createProject,listProjects,selectActiveProject, defaultProject, projectTodos, getProjectArray}
+function saveToJson(){
+    localStorage.setItem("project-directory", JSON.stringify(projectDirectory));
+}
+
+function loadJson(){
+    let loadedJson = JSON.parse(localStorage.getItem("project-directory") || "[]");
+    projectDirectory = loadedJson.map(objData => new Project(objData.projectName,objData.projectDescription,objData.todoList));
+}
+
+export {projectSidebar,createProject,listProjects,selectActiveProject, defaultProject, projectTodos, getProjectArray, saveToJson}

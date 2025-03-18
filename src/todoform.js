@@ -1,5 +1,5 @@
 import "./css/todoform.css"
-import { getProjectArray, selectActiveProject, projectTodos } from "./project.js";
+import { getProjectArray, selectActiveProject, projectTodos, saveToJson } from "./project.js";
 import { shared } from "./shared.js";
 
 const todoform = () => {
@@ -234,6 +234,8 @@ function editCard(activeProjectIndex, cardIndex){
         while(newForm.lastElementChild) {
             newForm.removeChild(newForm.lastElementChild);
         }
+
+        saveToJson();
     })
 
     formSection.appendChild(submitButton);

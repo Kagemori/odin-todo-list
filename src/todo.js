@@ -1,7 +1,7 @@
 import "./css/todo.css";
 import { shared } from "./shared.js";
 import { editCard } from "./todoform.js";
-import { projectTodos, selectActiveProject } from "./project.js";
+import { projectTodos, selectActiveProject, saveToJson } from "./project.js";
 
 const updateTodoContainer = (activeProjectArray) => {
     if(activeProjectArray.length > 0) {
@@ -67,6 +67,8 @@ function addTodoCard(name,desc,date,prio,index) {
         while(newForm.lastElementChild) {
             newForm.removeChild(newForm.lastElementChild);
         }
+
+        saveToJson();
     })
 
     let todoCardEdit = document.createElement("button");
