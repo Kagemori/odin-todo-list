@@ -29,6 +29,10 @@ class Project {
         let todo = {name: name,desc: desc,date: date,priority: prio}
         this.todoList[index] = todo;
     }
+
+    completeTodo(index) {
+        this.todoList.splice(index,1);
+    }
 }
 
 function defaultProject(){

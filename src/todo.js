@@ -1,6 +1,7 @@
 import "./css/todo.css";
 import { shared } from "./shared.js";
 import { editCard } from "./todoform.js";
+import { projectTodos, selectActiveProject } from "./project.js";
 
 const updateTodoContainer = (activeProjectArray) => {
     if(activeProjectArray.length > 0) {
@@ -51,6 +52,22 @@ function addTodoCard(name,desc,date,prio,index) {
     let todoCardComplete = document.createElement("button");
     todoCardComplete.classList.add("todo-card-complete");
     todoCardComplete.textContent = "Finished";
+
+    todoCardComplete.addEventListener('click', (e) => {
+        let card = e.target.closest(".todo-card");
+        let index = card.id;
+
+        let currentProject = selectActiveProject(shared.activeProject);
+        currentProject.completeTodo(index);
+        projectTodos(shared.activeProject);
+
+
+        let newForm = document.querySelector("#new-form");
+
+        while(newForm.lastElementChild) {
+            newForm.removeChild(newForm.lastElementChild);
+        }
+    })
 
     let todoCardEdit = document.createElement("button");
     todoCardEdit.classList.add("todo-card-edit");
