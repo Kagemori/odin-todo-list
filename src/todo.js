@@ -73,7 +73,7 @@ function addTodoCard(name,desc,date,prio,index) {
 
     let todoCardEdit = document.createElement("button");
     todoCardEdit.classList.add("todo-card-edit");
-    todoCardEdit.textContent = "Edit Todo";
+    todoCardEdit.textContent = "Edit";
 
     todoCardEdit.addEventListener('click', (e) => {
         let card = e.target.closest(".todo-card");

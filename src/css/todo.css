@@ -62,3 +62,19 @@
     margin: 10px 0px;
     justify-content: space-around;
 }
+
+.todo-card-options button {
+    background: lightgreen;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 2.5px 15px;
+    margin: 0px 20px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.todo-card-options button:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 5px black;
+}
