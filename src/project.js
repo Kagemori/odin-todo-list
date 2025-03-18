@@ -19,6 +19,16 @@ class Project {
         let todo = {name: name,desc: desc,date: date,priority: prio}
         this.todoList.push(todo);
     }
+
+    updateTodo(index) {
+        const name = document.getElementById("todo-name").value;
+        const desc = document.getElementById("todo-desc").value;
+        const date = document.getElementById("todo-date").value;
+        const prio = document.querySelector('input[name="priority"]:checked').value;
+
+        let todo = {name: name,desc: desc,date: date,priority: prio}
+        this.todoList[index] = todo;
+    }
 }
 
 function defaultProject(){
@@ -108,4 +118,9 @@ function projectTodos(index){
     updateTodoContainer(projectTodoArray);
 }
 
-export {projectSidebar,createProject,listProjects,selectActiveProject, defaultProject, projectTodos}
+function getProjectArray (activeProjectIndex){
+    console.log(projectDirectory[activeProjectIndex]);
+    return projectDirectory[activeProjectIndex];
+}
+
+export {projectSidebar,createProject,listProjects,selectActiveProject, defaultProject, projectTodos, getProjectArray}

@@ -1,4 +1,6 @@
 import "./css/todo.css";
+import { shared } from "./shared.js";
+import { editCard } from "./todoform.js";
 
 const updateTodoContainer = (activeProjectArray) => {
     if(activeProjectArray.length > 0) {
@@ -20,6 +22,7 @@ const updateTodoContainer = (activeProjectArray) => {
 function addTodoCard(name,desc,date,prio,index) {
     let todoCard = document.createElement("div");
     todoCard.classList.add("todo-card");
+    todoCard.setAttribute("id",index);
 
     let todoCardName = document.createElement("div");
     todoCardName.classList.add("todo-card-name");
@@ -42,8 +45,30 @@ function addTodoCard(name,desc,date,prio,index) {
     todoCard.appendChild(todoCardDate);
     todoCard.appendChild(todoCardPrio);
 
-    // todoCard.addEventListener('click', () => {
-    // })
+    let todoCardOptions = document.createElement("div");
+    todoCardOptions.classList.add("todo-card-options");
+
+    let todoCardComplete = document.createElement("button");
+    todoCardComplete.classList.add("todo-card-complete");
+    todoCardComplete.textContent = "Finished";
+
+    let todoCardEdit = document.createElement("button");
+    todoCardEdit.classList.add("todo-card-edit");
+    todoCardEdit.textContent = "Edit Todo";
+
+    todoCardEdit.addEventListener('click', (e) => {
+        let card = e.target.closest(".todo-card");
+        let index = card.id;
+
+        console.log(`Active Project: ${shared.activeProject} || Index: ${index}`);
+
+        editCard(shared.activeProject,index);
+    })
+
+    todoCardOptions.appendChild(todoCardComplete);
+    todoCardOptions.appendChild(todoCardEdit);
+
+    todoCard.appendChild(todoCardOptions);
 
     return todoCard;
 }

@@ -56,3 +56,9 @@
 
     padding: 0px 10px;
 }
+
+.todo-card-options {
+    display: flex;
+    margin: 10px 0px;
+    justify-content: space-around;
+}
